@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "easy-academy"
+version = "0.1.0"
+description = ""
+authors = ["41SergioF <carlossergio2401@outook.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.1"
+black = "^22.6.0"
+pylint = "^2.14.5"
+python-decouple = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
