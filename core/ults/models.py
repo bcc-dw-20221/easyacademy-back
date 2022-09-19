@@ -3,14 +3,14 @@ from pyexpat import model
 from unicodedata import name
 from django.db import models
 
-class Sector(models):
+class Sector(models.Model):
     name = models.CharField(max_length=50, unique=True)
     
     def __str__(self):
         return self.name
 
 
-class ClassHours(models): 
+class ClassHours(models.Model): 
     DAYS_WEEK = [
         #('DOM', 'Domingo'),
         ('SEC', 'Segunda-feira'),
@@ -56,7 +56,7 @@ class ClassHours(models):
             self.class_shift
         )
 
-class ClassRoom(models):
+class ClassRoom(models.Model):
     floor=models.CharField(max_length=2)
     number=models.CharField(max_length=3)
     
@@ -67,7 +67,7 @@ class ClassRoom(models):
             self.number,
         )
         
-class Subject(models):
+class Subject(models.Model):
     name=models.CharField(max_length=50, unique=True)
     #professor= models.ForeignKey(Professor, on_delete=models.CASCADE, default=None)
     class_hours=models.ManyToManyField(ClassHours, related_name='subject')
@@ -76,7 +76,7 @@ class Subject(models):
     def __str__(self):
         return self.name
     
-class Job(models):
+class Job(models.Model):
     title=models.CharField(max_length=100, blank=False)
     description=models.TextField(
         max_length=300,
