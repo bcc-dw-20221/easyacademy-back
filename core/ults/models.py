@@ -29,9 +29,9 @@ class ClassHours(models.Model):
 
     TIME_CLASS = [
         ('A', 'A'),
-        ('B', 'A'),
-        ('C', 'A'),
-        ('D', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+        ('D', 'D'),
     ] 
 
     day_week = models.CharField(
