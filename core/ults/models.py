@@ -28,6 +28,7 @@ class ClassHours(models.Model):
     ]
 
     TIME_CLASS = [
+
         ('A', 'A'),
         ('B', 'B'),
         ('C', 'C'),
