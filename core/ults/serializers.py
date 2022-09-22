@@ -5,7 +5,7 @@ from rest_framework import serializers
 class SectorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sector
-        fields = ['name']
+        fields = ['id', 'name']
 
 class ClassRoomSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,9 +15,9 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ['name']
+        fields = ['id', 'name']
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        fields = ['title']
+        fields = ['id', 'title']
