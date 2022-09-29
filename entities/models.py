@@ -24,7 +24,7 @@ class Student(models.Model):
         default="user_default/profile.jpg",
     )
     
-    create_date  = models.DateTimeField(default=timezone.now)
+    #create_date  = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
         return f"Perfil de {self.user.username}"

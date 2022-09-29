@@ -20,11 +20,11 @@ class CreateUserSerializer(serializers.HyperlinkedModelSerializer):
         model = get_user_model()
         fields = [
             "url",
-            "username",
-            "password",
-            "email",
             "first_name",
             "last_name",
+            "username",
+            "email",
+            "password",
         ]
         extra_kwargs = {"password": {"write_only": True}}
 
@@ -42,8 +42,7 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             "url",
             "user",
-            #"foto_perfil",
-            "create_date",
+            "foto_perfil",
         ]
 
     def create(self, validated_data):
