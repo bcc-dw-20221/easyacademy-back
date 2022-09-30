@@ -3,6 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
+from django.utils import timezone
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -30,6 +31,7 @@ class CreateUserSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         validated_data["password"] = make_password(validated_data.get("password"))
+        validated_data["username"] = validated_data["first_name"]+str(timezone.now().year)
         return super(CreateUserSerializer, self).create(validated_data)
 
 
