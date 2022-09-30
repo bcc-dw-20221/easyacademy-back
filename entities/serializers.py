@@ -3,6 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
+from django.utils import timezone
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -26,10 +27,11 @@ class CreateUserSerializer(serializers.HyperlinkedModelSerializer):
             "email",
             "password",
         ]
-        extra_kwargs = {"password": {"write_only": True}}
+        extra_kwargs = {"password": {"write_only": True}, "username" : {"read_only": True}}
 
     def create(self, validated_data):
         validated_data["password"] = make_password(validated_data.get("password"))
+        validated_data["username"] = validated_data["first_name"]+str(timezone.now().year)
         return super(CreateUserSerializer, self).create(validated_data)
 
 
@@ -58,8 +60,8 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
         if user.pk:
             student, created = Student.objects.update_or_create(
                 user=user,
-                #foto_perfil=validated_data.pop("foto_perfil"),
-                create_date=validated_data.pop("create_date"),
+                foto_perfil=validated_data.pop("foto_perfil"),
+                #create_date=validated_data.pop("create_date"),
             )
             if created:
                 return student
