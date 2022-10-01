@@ -5,6 +5,7 @@ from ults.views import SectorViewSet,ClassRoomViewSet, SubjectViewSet, JobViewSe
 from entities.views import (
     StudentViewSet,
     UserViewSet,
+    TeacherViewSet
 )
 
 router= routers.DefaultRouter()
@@ -12,8 +13,10 @@ router.register(r'setores', SectorViewSet)
 router.register(r'salas', ClassRoomViewSet)
 router.register(r'disciplinas', SubjectViewSet)
 router.register(r'vagas', JobViewSet)
-router.register(r'estudantes', StudentViewSet),
+
 router.register(r'usuarios', UserViewSet),
+router.register(r'estudantes', StudentViewSet),
+router.register(r'professores', TeacherViewSet),
 
 urlpatterns = [
     path("admin/", admin.site.urls),

@@ -1,4 +1,4 @@
-from .models import Student
+from .models import Student, Teacher
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
@@ -69,4 +69,32 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
             user.delete()
         return Response({"message": "Não pude criar um novo perfil."}, status=406)
     
+
+class TeacherSerializer(serializers.HyperlinkedModelSerializer):
     
+    user = CreateUserSerializer(required=True)
+    
+    class Meta:
+        model = Teacher
+        fields = [
+            "urls",
+            "user",
+            "foto_perfil",
+        ]
+
+    def create(self, validated_data):
+        user_data = validated_data["user"]
+        user = CreateUserSerializer.create(
+            CreateUserSerializer(), validated_data=user_data 
+        )
+        if user.pk:
+            teacher, created, = Teacher.objects.update_or_create(
+                user=user,
+                foto_perfil=validated_data.pop("foto_perfil")
+            )
+            if created:
+                return teacher
+        else:
+            user.delete()
+        return Response({"message": "Não pude criar um novo usuário"}, status=406)
+

@@ -1,5 +1,3 @@
-from email.policy import default
-from turtle import update
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -43,7 +41,7 @@ class Teacher(models.Model):
     foto_perfil = models.ImageField(
         "Foto de perfil",
         blank=True,
-        update_to=user_directory_path,
+        upload_to=user_directory_path,
         default="user_default/profile.jpg", 
     )
     
