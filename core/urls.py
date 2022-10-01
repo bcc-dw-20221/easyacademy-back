@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
+from ults.views import (
+    SectorViewSet,
+    ClassRoomViewSet,
+    SubjectViewSet,
+    JobViewSet,
+)
 from entities.views import (
     StudentViewSet,
     UserViewSet,
