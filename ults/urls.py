@@ -16,7 +16,7 @@ router.register(r'disciplinas', SubjectViewSet)
 router.register(r'vagas', JobViewSet)
 router.register(r'cursos', CourseViewSet),
 
-urlspattern = [
+urlpatterns = [
     path("", include(router.urls)),
 ]
 
