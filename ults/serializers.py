@@ -20,7 +20,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'coordenador']
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
