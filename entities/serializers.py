@@ -1,3 +1,5 @@
+from enum import unique
+from pyexpat import model
 from .models import Student, Teacher
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
@@ -43,9 +45,11 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
         model = Student
         fields = [
             "url",
+            "registration",
             "user",
             "foto_perfil",
         ]
+        extra_kwargs = {"registration": {"read_only": True}}
 
     def create(self, validated_data):
         """
@@ -61,7 +65,8 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
             student, created = Student.objects.update_or_create(
                 user=user,
                 foto_perfil=validated_data.pop("foto_perfil"),
-                #create_date=validated_data.pop("create_date"),
+                #ano-cod-id-user
+                registration=str(timezone.now().year)+'11'+str(user.pk),
             )
             if created:
                 return student

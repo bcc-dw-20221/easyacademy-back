@@ -16,6 +16,8 @@ class Student(models.Model):
         on_delete=models.CASCADE,
         related_name="student",
     )
+   
+    registration = models.CharField(max_length=20, unique=True)
 
     foto_perfil = models.ImageField(
         "Foto de perfil",
