@@ -28,6 +28,8 @@ class Student(models.Model):
     
     create_date  = models.DateTimeField(default=timezone.now)
 
+    
+
     def __str__(self) -> str:
         return f"Perfil de {self.user.username}"
 
