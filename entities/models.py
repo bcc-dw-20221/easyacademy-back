@@ -14,7 +14,7 @@ class Student(models.Model):
         get_user_model(),
         primary_key=True,
         on_delete=models.CASCADE,
-        related_name="perfil",
+        related_name="student",
     )
 
     foto_perfil = models.ImageField(
@@ -35,7 +35,7 @@ class Teacher(models.Model):
         get_user_model(),
         primary_key=True,
         on_delete=models.CASCADE,
-        related_name="perfil",
+        related_name="teacher",
     )
     
     foto_perfil = models.ImageField(

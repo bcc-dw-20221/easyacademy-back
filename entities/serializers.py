@@ -77,7 +77,7 @@ class TeacherSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Teacher
         fields = [
-            "urls",
+            "url",
             "user",
             "foto_perfil",
         ]
