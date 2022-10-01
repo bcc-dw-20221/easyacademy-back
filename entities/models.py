@@ -14,8 +14,10 @@ class Student(models.Model):
         get_user_model(),
         primary_key=True,
         on_delete=models.CASCADE,
-        related_name="perfil",
+        related_name="student",
     )
+   
+    registration = models.CharField(max_length=20, unique=True)
 
     foto_perfil = models.ImageField(
         "Foto de perfil",
@@ -30,3 +32,25 @@ class Student(models.Model):
 
     def __str__(self) -> str:
         return f"Perfil de {self.user.username}"
+
+class Teacher(models.Model):
+    
+    user = models.OneToOneField(
+        get_user_model(),
+        primary_key=True,
+        on_delete=models.CASCADE,
+        related_name="teacher",
+    )
+    
+    foto_perfil = models.ImageField(
+        "Foto de perfil",
+        blank=True,
+        upload_to=user_directory_path,
+        default="user_default/profile.jpg", 
+    )
+    
+    create_date  = models.DateTimeField(default=timezone.now)
+
+    def __str__(self) -> str:
+        return f"Perfil de {self.user.username}"
+    
