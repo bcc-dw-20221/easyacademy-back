@@ -1,3 +1,5 @@
+from email.policy import default
+from turtle import update
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -28,3 +30,25 @@ class Student(models.Model):
 
     def __str__(self) -> str:
         return f"Perfil de {self.user.username}"
+
+class Teacher(models.Model):
+    
+    user = models.OneToOneField(
+        get_user_model(),
+        primary_key=True,
+        on_delete=models.CASCADE,
+        related_name="perfil",
+    )
+    
+    foto_perfil = models.ImageField(
+        "Foto de perfil",
+        blank=True,
+        update_to=user_directory_path,
+        default="user_default/profile.jpg", 
+    )
+    
+    create_date  = models.DateTimeField(default=timezone.now)
+
+    def __str__(self) -> str:
+        return f"Perfil de {self.user.username}"
+    
