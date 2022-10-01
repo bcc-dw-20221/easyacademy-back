@@ -6,6 +6,7 @@ from ults.views import (
     ClassRoomViewSet,
     SubjectViewSet,
     JobViewSet,
+    CourseViewSet,
 )
 from entities.views import (
     StudentViewSet,
@@ -18,6 +19,7 @@ router.register(r'setores', SectorViewSet)
 router.register(r'salas', ClassRoomViewSet)
 router.register(r'disciplinas', SubjectViewSet)
 router.register(r'vagas', JobViewSet)
+router.register(r'cursos', CourseViewSet)
 
 router.register(r'usuarios', UserViewSet),
 router.register(r'estudantes', StudentViewSet),
