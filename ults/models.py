@@ -75,7 +75,14 @@ class Subject(models.Model):
     classroom=models.ManyToManyField(ClassRoom, related_name='subject')
     
     def __str__(self):
-        return self.name
+        return self.namegis 
+    
+class Course(models.Model):
+    name=models.CharField(max_length=50, unique=True)
+    #coordenador= models.ForeignKey(Professor, on_delete=models.CASCADE, default=None)
+    
+    def __str__(self):
+        return self.name 
     
 class Job(models.Model):
     title=models.CharField(max_length=100, blank=False)
