@@ -59,13 +59,13 @@ class ClassRoom(models.Model):
     floor=models.CharField(max_length=2)
     number=models.CharField(max_length=3)
     
-    
     def __str__(self):
         return f"{0}-{1}".format(
             self.floor,
             self.number,
         )
-        
+
+
 class Subject(models.Model):
     name=models.CharField(max_length=50, unique=True)
     teacher= models.ForeignKey(Teacher, on_delete=models.CASCADE, default=None)
@@ -74,6 +74,7 @@ class Subject(models.Model):
     
     def __str__(self):
         return self.namegis 
+
     
 class Course(models.Model):
     name=models.CharField(max_length=50, unique=True)
@@ -81,6 +82,7 @@ class Course(models.Model):
     
     def __str__(self):
         return self.name 
+
     
 class Job(models.Model):
     title=models.CharField(max_length=100, blank=False)
@@ -92,5 +94,4 @@ class Job(models.Model):
     
     def __str__(self):
         return self.title
-    
-
+  

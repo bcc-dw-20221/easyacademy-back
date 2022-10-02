@@ -7,15 +7,17 @@ from ults.views import (
     SubjectViewSet,
     JobViewSet,
     CourseViewSet,
+    ClassHoursViewSet,
 )
 from entities.views import (
     StudentViewSet,
     UserViewSet,
-    TeacherViewSet
+    TeacherViewSet,
 )
 
 router= routers.DefaultRouter()
 router.register(r'setores', SectorViewSet)
+router.register(r'horarios', ClassHoursViewSet)
 router.register(r'salas', ClassRoomViewSet)
 router.register(r'disciplinas', SubjectViewSet)
 router.register(r'vagas', JobViewSet)
