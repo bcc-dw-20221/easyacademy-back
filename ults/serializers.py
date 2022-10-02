@@ -1,5 +1,4 @@
-from dataclasses import field, fields
-from .models import Sector, ClassRoom, Subject, Job
+from .models import Course, Sector, ClassRoom, Subject, Job
 from rest_framework import serializers
 
 class SectorSerializer(serializers.ModelSerializer):
@@ -15,7 +14,12 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'teacher']
+
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ['id', 'name', 'coordenador']
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
